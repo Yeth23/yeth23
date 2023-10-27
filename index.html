@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Traffic Light Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .traffic-light {
+            width: 100px;
+            height: 300px;
+            background-color: #333;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .light {
+            width: 80px;
+            height: 80px;
+            background-color: #555;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="traffic-light">
+        <div class="red light"></div>
+        <div class="yellow light"></div>
+        <div class="green light"></div>
+    </div>
+    <script>
+        let currentLight = 'red';
+
+        function changeLight() {
+            switch (currentLight) {
+                case 'red':
+                    turnRed();
+                    break;
+                case 'yellow':
+                    turnYellow();
+                    break;
+                case 'green':
+                    turnGreen();
+                    break;
+                default:
+                    turnRed();
+            }
+        }
+
+        function turnRed() {
+            document.querySelector('.red').style.backgroundColor = 'red';
+            document.querySelector('.yellow').style.backgroundColor = '#ccc';
+            document.querySelector('.green').style.backgroundColor = '#ccc';
+            currentLight = 'yellow';
+            setTimeout(changeLight, 2000); // Change to yellow after 2 seconds
+        }
+
+        function turnYellow() {
+            document.querySelector('.red').style.backgroundColor = '#ccc';
+            document.querySelector('.yellow').style.backgroundColor = 'yellow';
+            document.querySelector('.green').style.backgroundColor = '#ccc';
+            currentLight = 'green';
+            setTimeout(changeLight, 2000);  //Change to green after 2 seconds
+        }
+
+        function turnGreen() {
+            document.querySelector('.red').style.backgroundColor = '#ccc';
+            document.querySelector('.yellow').style.backgroundColor = '#ccc';
+            document.querySelector('.green').style.backgroundColor = 'green';
+            currentLight = 'red';
+            setTimeout(changeLight, 2000); // Change to red after 2 seconds
+        }
+
+        
+        setTimeout(changeLight, 2000); // Start with a 2-second delay
+    </script>
+</body>
+</html>
